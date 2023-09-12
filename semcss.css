@@ -1,0 +1,20 @@
+header {
+    background-color: red; display: flex; align-content:center; 
+}
+nav li{
+    display: inline; margin-right: 10%;
+}
+nav section{
+    background-color: aqua;
+}
+a:hover {
+    font-weight: 900;
+}
+
+a:visited {
+    color: black;
+}
+
+footer{
+    background-color: rgb(105, 104, 104);
+}
