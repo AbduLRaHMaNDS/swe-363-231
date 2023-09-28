@@ -18,3 +18,22 @@ a:visited {
 footer{
     background-color: rgb(105, 104, 104);
 }
+section button {
+    font-size: 14px;
+    transition: font-size 4s 1s,background-color 4s 1s, color 4s 1s;
+  }
+  
+  section button:hover {
+    font-size: 36px;
+    background-color: blue;
+    color: white;
+  }
+nav img{
+    transition: a 4s 1s;
+}
+nav img:hover{
+    a{
+        display:none ;
+    } ;
+}
+
