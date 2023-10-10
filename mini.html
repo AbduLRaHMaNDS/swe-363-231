@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mini Games</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        .cell {
+            font-family: sans-serif;
+            font-size: larger;
+            font-weight: bolder;
+            background-color: beige;
+            width: 100px;
+            height: 100px;
+            border: 1px solid black;
+            text-align: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .cell:hover {
+            background-color: blanchedalmond;
+        }
+
+        .row {
+            display: flex;
+        }
+    </style>
+</head>
+<body>
+    <h1 id="turn">
+        Now it's is <span>X</span> turn
+    </h1>
+    <!-- Board -->
+    <div class="board">
+        <div class="row">
+            <div class="cell" id="1"></div>
+            <div class="cell" id="2"></div>
+            <div class="cell" id="3"></div>
+        </div>
+        <div class="row">
+            <div class="cell" id="4"></div>
+            <div class="cell" id="5"></div>
+            <div class="cell" id="6"></div>
+        </div>
+        <div class="row">
+            <div class="cell" id="7"></div>
+            <div class="cell" id="8"></div>
+            <div class="cell" id="9"></div>
+        </div>
+        <button > <b>
+            <a href="file:///C:/Users/96659/OneDrive/%D8%B3%D8%B7%D8%AD%20%D8%A7%D9%84%D9%85%D9%83%D8%AA%D8%A8/swe-363-231-2/semantic.html">End game</a>
+        </b>
+        </button>
+        <button > <b>
+            <a href="file:///C:/Users/96659/OneDrive/%D8%B3%D8%B7%D8%AD%20%D8%A7%D9%84%D9%85%D9%83%D8%AA%D8%A8/swe-363-231-2/mini.html">Restart</a>
+        </b>
+        </button>
+        <script>
+
+            // decided which turn is it
+            let turn = "X"
+            let gameEnded = false
+
+            // when we click on a cell add the letter 
+            let board = document.getElementsByClassName("board")[0]
+            board.addEventListener("click", cellClicked)
+
+            function cellClicked(event) {
+                let cell = event.target
+                if(cell.innerText === ""){
+                    // change cell to the letter of the turn
+                    cell.innerText = turn
+                    // change turn
+                    turn = turn === "X" ? "O" : "X"
+                    turnLetter = document.querySelector("#turn span")
+                    turnLetter.innerText = turn
+                    // let cell1 = document.querySelector(".board .cell #1")
+                    // console.log(cell1)
+                    
+                }
+                
+                // if( document.querySelectorall("#1").innerText ===  document.querySelectorall("#2").innerText ===  document.querySelectorall("#3").innerText === "X"){
+                //     gameEnded = true
+                // }
+                
+
+                if (gameEnded) {
+                    // HW 
+                    endgame = document.querySelector("#turn")
+                    endgame.innerText = turn + " is the winner!"
+
+                }
+            }
+        </script>
+    </div>
+    
+</body>
+</html>
