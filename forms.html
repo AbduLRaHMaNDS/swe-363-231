@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <link rel="stylesheet" href="dark.css">
+        <!-- <link rel="stylesheet" href="dark.css"> -->
     </head>
     <header>
         <h1>Get Hired</h1>
@@ -27,12 +27,84 @@
                     <option value="Qatar"></option>
                 </datalist>
             </div>
-            <input type="submit" value="submit">
-            <button> <b>
-                Feeling lucky
-            </b>
-            </button>
+            
+            
         </form>
+        <div class="toolbar">
+            <input type="color" aria-label="select pen color" value="#ff0000">
+            <input type="range" min="2" max="50" value="30" aria-label="select pen size"><span class="output">30</span>
+            <button >Clear canvas</button>
+        </div>
+    
+        <canvas class="myCanvas">
+            <p>add your signiture</p>
+        </canvas>
+        <div>
+            <!-- <input type="submit" value="submit" class="b_sub"> -->
+            <button onclick="window.location.reload()">Submit</button>
+        </div>
+        
+        <script>
+            const canvas = document.querySelector('.myCanvas');
+            const width = canvas.width = 300;
+            const height = canvas.height = 100;
+            const ctx = canvas.getContext('2d');
+    
+            ctx.fillStyle = 'rgb(0,0,0)';
+            ctx.fillRect(0, 0, width, height);
+    
+            const colorPicker = document.querySelector('input[type="color"]');
+            const sizePicker = document.querySelector('input[type="range"]');
+            const output = document.querySelector('.output');
+            const clearBtn = document.querySelector('button');
+            // const b_submit = document.querySelector(".b_sub")
+
+            // covert degrees to radians
+            function degToRad(degrees) {
+                return degrees * Math.PI / 180;
+            };
+    
+            // update sizepicker output value
+            sizePicker.addEventListener('input', () => output.textContent = sizePicker.value);
+    
+            // store mouse pointer coordinates, and whether the button is pressed
+            let curX;
+            let curY;
+            let pressed = false;
+    
+            // update mouse pointer coordinates
+            document.addEventListener('mousemove', e => {
+                curX = e.clientX
+                curY = e.clientY 
+            });
+    
+            canvas.addEventListener('mousedown', () => pressed = true);
+            canvas.addEventListener('mouseup', () => pressed = false);
+            clearBtn.addEventListener('click', () => {
+                ctx.fillStyle = 'rgb(0,0,0)';
+                ctx.fillRect(0, 0, width, height);
+            });
+            // b_submit.addEventListener('click', () => {
+            //     <meta http-equiv="refresh" content="1; url = file:///C:/Users/96659/OneDrive/%D8%B3%D8%B7%D8%AD%20%D8%A7%D9%84%D9%85%D9%83%D8%AA%D8%A8/swe-363-231-2/forms.html?Married=on"></meta>
+            // });
+    
+            let size = 10
+    
+            function draw() {
+                ctx.fillStyle = colorPicker.value;
+                
+                if (pressed){
+                    ctx.beginPath();
+                    ctx.arc(curX, curY - 85, sizePicker.value, degToRad(0), degToRad(360), false);
+                    ctx.fill();
+                }
+    
+                requestAnimationFrame(draw);
+            }
+    
+            draw();
+    
+        </script>
 
     </body>
     <footer>
